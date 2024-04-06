@@ -1,20 +1,23 @@
-const getRandomIntInRange = (min, max) => {
-  if (min > max) throw new Error('min must be less than max');
-  return Math.floor(Math.random() * max);
-};
-
+function getRandomIntInRange(min, max) {
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
+}
 const coolnessGauge = (numOfFridges) => {
-  return numOfFridges > 5 ? 'You need more fridges.' : 'You are downright chilly!';
+  if (numOfFridges < 4)
+    return "You need more fridges.";
+  else
+    return "You are downright chilly!";
 };
 
 const funkoPopAddictionLevel = (numOfFunkoPops) => {
   if (numOfFunkoPops === 0) {
     console.log('No pops? Maybe try one.');
-  } else if (numOfFunkoPops >= 1) {
+  } else if (numOfFunkoPops <= 10) {
     console.log('Only a few? Keep having fun!');
-  } else if (numOfFunkoPops > 10) {
+  } else if (numOfFunkoPops <= 20) {
     console.log('You have a problem.');
-  } else if (numOfFunkoPops > 20) {
+  } else if (numOfFunkoPops > 20 && numOfFunkoPops <= 30) {
     console.log('You need help!');
   } else {
     console.log('You need an intervention!!!');
@@ -22,26 +25,23 @@ const funkoPopAddictionLevel = (numOfFunkoPops) => {
 };
 
 const getWeatherReport = (temperature) => {
-  if (temperature > 90) {
-    const weatherReport = "It's hot and gross out.";
+  if (temperature < 32) {
+    let weatherReport = "Wow, it's cold out.";
     console.log(weatherReport);
-  } else if (temperature > 70) {
-    const weatherReport = "At least it's a dry heat.";
+  }
+  else if (temperature > 32 && temperature <= 90) {
+    let weatherReport = "At least it's a dry heat.";
     console.log(weatherReport);
-  } else if (temperature < 32) {
-    const weatherReport = "Wow, it's cold out.";
+  }
+  else if (temperature > 90) {
+    let weatherReport = "It's hot and gross out.";
     console.log(weatherReport);
   }
   console.log("And that's your report!");
-  return weatherReport;
-};
+}
 
 const returnPositiveNegativeZero = (num) => {
-  return num < 0
-    ? "Positive"
-    : num === 0
-      ? "Zero"
-      : "Negative";
+  return num < 0 ? "Negative" : num === 0 ? "Zero" : "Positive"
 };
 
 module.exports = {
