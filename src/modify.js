@@ -1,4 +1,8 @@
 const wildlyBiasedReview = (location) => {
+  if (typeof location !== "string") {
+    console.log("This is not a string");
+    return;
+  }
   if (location !== 'NYC') {
     console.log('Yea that place is cool I guess');
   }
